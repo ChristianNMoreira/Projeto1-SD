@@ -1,0 +1,11 @@
+library ieee;
+use ieee.std_logic_1164.all;
+
+entity ULA is port (
+       A, B, C, D: in std_logic;
+		 K1, K2, k3; in std_logic;
+		 E, F, G, H: out std_logic
+		 );
+		 
+architecture teste of ULA is
+component adder

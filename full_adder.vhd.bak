@@ -1,0 +1,17 @@
+LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
+
+ENTITY full_adder IS PORT ( 
+	A, B, Cin: IN std_logic;
+	S, Cout: OUT std_logic
+	);
+END full_adder;
+
+ARCHITECTURE teste OF full_adder IS
+SIGNAL aux1, aux2: std_logic;
+BEGIN
+	S <= (A XOR B) XOR Cin;
+	aux1 <= A AND B;
+	aux2 <= (A XOR B) AND Cin;
+	Cout <= aux1 OR aux2;
+END teste;
