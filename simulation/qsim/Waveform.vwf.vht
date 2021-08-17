@@ -19,7 +19,7 @@
 -- the top level entity of the current Quartus project .The user can use this   
 -- testbench to simulate his design using a third-party simulation tool .       
 -- *****************************************************************************
--- Generated on "08/10/2021 17:02:59"
+-- Generated on "08/16/2021 23:12:47"
                                                              
 -- Vhdl Test Bench(with test vectors) for design  :          ULA
 -- 
@@ -39,9 +39,7 @@ SIGNAL A2 : STD_LOGIC_VECTOR(3 DOWNTO 0);
 SIGNAL Cin : STD_LOGIC;
 SIGNAL Cout : STD_LOGIC;
 SIGNAL E1 : STD_LOGIC_VECTOR(3 DOWNTO 0);
-SIGNAL K1 : STD_LOGIC;
-SIGNAL K2 : STD_LOGIC;
-SIGNAL K3 : STD_LOGIC;
+SIGNAL K : STD_LOGIC_VECTOR(2 DOWNTO 0);
 COMPONENT ULA
 	PORT (
 	A1 : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
@@ -49,9 +47,7 @@ COMPONENT ULA
 	Cin : IN STD_LOGIC;
 	Cout : OUT STD_LOGIC;
 	E1 : OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
-	K1 : IN STD_LOGIC;
-	K2 : IN STD_LOGIC;
-	K3 : IN STD_LOGIC
+	K : IN STD_LOGIC_VECTOR(2 DOWNTO 0)
 	);
 END COMPONENT;
 BEGIN
@@ -63,21 +59,15 @@ BEGIN
 	Cin => Cin,
 	Cout => Cout,
 	E1 => E1,
-	K1 => K1,
-	K2 => K2,
-	K3 => K3
+	K => K
 	);
 -- A1[3]
 t_prcs_A1_3: PROCESS
 BEGIN
 	A1(3) <= '0';
-	WAIT FOR 90000 ps;
-	A1(3) <= '1';
 	WAIT FOR 70000 ps;
-	A1(3) <= '0';
-	WAIT FOR 20000 ps;
 	A1(3) <= '1';
-	WAIT FOR 80000 ps;
+	WAIT FOR 190000 ps;
 	A1(3) <= '0';
 	WAIT FOR 50000 ps;
 	A1(3) <= '1';
@@ -89,15 +79,7 @@ END PROCESS t_prcs_A1_3;
 t_prcs_A1_2: PROCESS
 BEGIN
 	A1(2) <= '1';
-	WAIT FOR 80000 ps;
-	A1(2) <= '0';
-	WAIT FOR 10000 ps;
-	A1(2) <= '1';
-	WAIT FOR 70000 ps;
-	A1(2) <= '0';
-	WAIT FOR 20000 ps;
-	A1(2) <= '1';
-	WAIT FOR 80000 ps;
+	WAIT FOR 260000 ps;
 	A1(2) <= '0';
 WAIT;
 END PROCESS t_prcs_A1_2;
@@ -119,9 +101,9 @@ END PROCESS t_prcs_A1_1;
 t_prcs_A1_0: PROCESS
 BEGIN
 	A1(0) <= '1';
-	WAIT FOR 80000 ps;
+	WAIT FOR 70000 ps;
 	A1(0) <= '0';
-	WAIT FOR 100000 ps;
+	WAIT FOR 110000 ps;
 	A1(0) <= '1';
 	WAIT FOR 80000 ps;
 	A1(0) <= '0';
@@ -131,9 +113,9 @@ END PROCESS t_prcs_A1_0;
 t_prcs_A2_3: PROCESS
 BEGIN
 	A2(3) <= '1';
-	WAIT FOR 80000 ps;
+	WAIT FOR 70000 ps;
 	A2(3) <= '0';
-	WAIT FOR 100000 ps;
+	WAIT FOR 110000 ps;
 	A2(3) <= '1';
 	WAIT FOR 80000 ps;
 	A2(3) <= '0';
@@ -147,13 +129,9 @@ END PROCESS t_prcs_A2_3;
 t_prcs_A2_2: PROCESS
 BEGIN
 	A2(2) <= '0';
-	WAIT FOR 90000 ps;
+	WAIT FOR 70000 ps;
 	A2(2) <= '1';
-	WAIT FOR 60000 ps;
-	A2(2) <= '0';
-	WAIT FOR 30000 ps;
-	A2(2) <= '1';
-	WAIT FOR 80000 ps;
+	WAIT FOR 190000 ps;
 	A2(2) <= '0';
 WAIT;
 END PROCESS t_prcs_A2_2;
@@ -175,14 +153,12 @@ END PROCESS t_prcs_A2_1;
 t_prcs_A2_0: PROCESS
 BEGIN
 	A2(0) <= '0';
-	WAIT FOR 90000 ps;
+	WAIT FOR 70000 ps;
 	A2(0) <= '1';
-	WAIT FOR 60000 ps;
+	WAIT FOR 190000 ps;
 	A2(0) <= '0';
-	WAIT FOR 30000 ps;
+	WAIT FOR 120000 ps;
 	A2(0) <= '1';
-	WAIT FOR 80000 ps;
-	A2(0) <= '0';
 WAIT;
 END PROCESS t_prcs_A2_0;
 
@@ -192,25 +168,42 @@ BEGIN
 	Cin <= '0';
 WAIT;
 END PROCESS t_prcs_Cin;
-
--- K1
-t_prcs_K1: PROCESS
+-- K[2]
+t_prcs_K_2: PROCESS
 BEGIN
-	K1 <= '0';
+	K(2) <= '0';
+	WAIT FOR 350000 ps;
+	K(2) <= '1';
+	WAIT FOR 70000 ps;
+	K(2) <= '0';
 WAIT;
-END PROCESS t_prcs_K1;
-
--- K2
-t_prcs_K2: PROCESS
+END PROCESS t_prcs_K_2;
+-- K[1]
+t_prcs_K_1: PROCESS
 BEGIN
-	K2 <= '0';
+	K(1) <= '0';
+	WAIT FOR 350000 ps;
+	K(1) <= '1';
+	WAIT FOR 70000 ps;
+	K(1) <= '0';
 WAIT;
-END PROCESS t_prcs_K2;
-
--- K3
-t_prcs_K3: PROCESS
+END PROCESS t_prcs_K_1;
+-- K[0]
+t_prcs_K_0: PROCESS
 BEGIN
-	K3 <= '0';
+	K(0) <= '0';
+	WAIT FOR 70000 ps;
+	K(0) <= '1';
+	WAIT FOR 60000 ps;
+	K(0) <= '0';
+	WAIT FOR 80000 ps;
+	K(0) <= '1';
+	WAIT FOR 50000 ps;
+	K(0) <= '0';
+	WAIT FOR 90000 ps;
+	K(0) <= '1';
+	WAIT FOR 70000 ps;
+	K(0) <= '0';
 WAIT;
-END PROCESS t_prcs_K3;
+END PROCESS t_prcs_K_0;
 END ULA_arch;

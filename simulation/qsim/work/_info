@@ -10,14 +10,14 @@ z2
 cModel Technology
 Z0 dC:/VHDL/PROJETO 1/ULA/simulation/qsim
 Ehard_block
-Z1 w1628625782
+Z1 w1629166370
 Z2 DPx4 ieee 16 vital_primitives 0 22 G>kiXP8Q9dRClKfK1Zn7j1
 Z3 DPx10 cycloneive 20 cycloneive_atom_pack 0 22 76OUjOFMM1Jzd<9936DA;3
 Z4 DPx4 ieee 12 vital_timing 0 22 J>EBealN09f8GzldA[z2>3
 Z5 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
 Z6 DPx4 ieee 14 std_logic_1164 0 22 cVAk:aDinOX8^VGI1ekP<3
 Z7 DPx10 cycloneive 21 cycloneive_components 0 22 dANj__M<MaN@;H9Tkm=iP1
-!i122 4
+!i122 14
 R0
 Z8 8ULA.vho
 Z9 FULA.vho
@@ -27,9 +27,9 @@ VB]0;STalBkCB1_B4BXQDW2
 !s100 >mXi5[`cD`bFC`UBKA<om3
 Z10 OV;C;2020.1;71
 32
-Z11 !s110 1628625786
+Z11 !s110 1629166372
 !i10b 1
-Z12 !s108 1628625786.000000
+Z12 !s108 1629166372.000000
 Z13 !s90 -work|work|ULA.vho|
 Z14 !s107 ULA.vho|
 !i113 1
@@ -43,7 +43,7 @@ R5
 R6
 R7
 DEx4 work 10 hard_block 0 22 B]0;STalBkCB1_B4BXQDW2
-!i122 4
+!i122 14
 l65
 L51 20
 Via>5o7W??azG@W@@eFOTF0
@@ -66,14 +66,14 @@ R4
 R5
 R6
 R7
-!i122 4
+!i122 14
 R0
 R8
 R9
 l0
 L78 1
-VlGU9KlGDNSVl:dQX>Va490
-!s100 LUhbLPn_FkeQ>6k?czH5]2
+Vbn=Vhlfb96@NZjRmXN]652
+!s100 3ZnX[A]?:87J8IDEd0]E]3
 R10
 32
 R11
@@ -91,12 +91,12 @@ R4
 R5
 R6
 R7
-DEx4 work 3 ula 0 22 lGU9KlGDNSVl:dQX>Va490
-!i122 4
-l162
-L111 400
-Vd>`E5z@4BmUN]fP;ezJID3
-!s100 8dTD=YRC:k[@9k>kWdc@X0
+DEx4 work 3 ula 0 22 bn=Vhlfb96@NZjRmXN]652
+!i122 14
+l169
+L109 593
+V^B8L@HZ]<MkV6`b2cB[UU0
+!s100 a=Y[ZKh9A^5]09K9D<1U61
 R10
 32
 R11
@@ -108,10 +108,10 @@ R14
 R15
 R16
 Eula_vhd_vec_tst
-Z17 w1628625779
+Z17 w1629166367
 R5
 R6
-!i122 5
+!i122 15
 R0
 Z18 8Waveform.vwf.vht
 Z19 FWaveform.vwf.vht
@@ -121,30 +121,30 @@ VjA]6`340`7FfUKW8>3CGk2
 !s100 JmH7VbN<P7=]ZjOT0CiV92
 R10
 32
-R11
+Z20 !s110 1629166373
 !i10b 1
 R12
-Z20 !s90 -work|work|Waveform.vwf.vht|
-Z21 !s107 Waveform.vwf.vht|
+Z21 !s90 -work|work|Waveform.vwf.vht|
+Z22 !s107 Waveform.vwf.vht|
 !i113 1
 R15
 R16
 Aula_arch
 R5
 R6
-Z22 DEx4 work 15 ula_vhd_vec_tst 0 22 jA]6`340`7FfUKW8>3CGk2
-!i122 5
-l57
-L34 183
-V9imDC2cO[jH7DIPeA7Ue01
-!s100 Cb>I0;e1Q^HPfOBaYe6ec2
+Z23 DEx4 work 15 ula_vhd_vec_tst 0 22 jA]6`340`7FfUKW8>3CGk2
+!i122 15
+l53
+Z24 L34 176
+V>22SL^o_2Kn2Vaj=abimd3
+!s100 ^6I7=`ma1eZbF:gY;hzlG0
 R10
 32
-R11
+R20
 !i10b 1
 R12
-R20
 R21
+R22
 !i113 1
 R15
 R16
