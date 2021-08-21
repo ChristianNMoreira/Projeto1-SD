@@ -28,6 +28,8 @@ signal sum: std_logic_vector(n-1 downto 0); -- sum 4 bits
 signal aux_sum: std_logic_vector(n downto 0);
 signal sum1: std_logic_vector(n-1 downto 0); -- 1 implement
 signal aux_sum1: std_logic_vector(n downto 0);
+signal sub: std_logic_vector(n-1 downto 0);
+signal aux_sub: std_logic_vector(n downto 0);
 signal cts: std_logic_vector(8 downto 0); -- carry outs
 constant zeros : std_logic_vector(n-1 downto 0) := ( others => '0');
 begin
@@ -48,8 +50,16 @@ begin
 			 ONEA_i: full_adder port map (A => A1(i), B => '0', Cin => aux_sum1(i), S => sum1(i), Cout => aux_sum1(i+1));
 		end generate;
 		
+		--sub
+		
+		aux_sub(0) <= '1';
+		FA_sub: for i in 0 to (n-1) generate
+			 FA_sub_i: full_adder port map (A => A1(i), B => (not A2(i)), Cin => aux_sub(i), S => sub(i), Cout => aux_sub(i+1));
+		end generate;
+		
 		E1 <= sum when (K="000") else
 			   sum1 when (K="001") else
+				sub when (K="010") else
 			   zeros;
 			  
 		Cout <= cts(0) when (K="000") else
