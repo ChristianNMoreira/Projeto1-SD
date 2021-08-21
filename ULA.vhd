@@ -11,6 +11,7 @@ entity ULA is
 		A1, A2: in std_logic_vector(n-1 downto 0);
 		K: in std_logic_vector (2 downto 0);
 		Cout: out std_logic;
+		OV: out std_logic; --Overflow
 		E1: out std_logic_vector(n-1 downto 0)
 		);
 		
@@ -21,7 +22,11 @@ component full_adder port (
 		A, B, Cin: in std_logic;
 		S, Cout: out std_logic
 		);
-		
+end component;
+component overflow_detector port ( 
+		A, B, Z: in std_logic;
+		O: out std_logic
+		);
 end component;
 
 signal sum: std_logic_vector(n-1 downto 0); -- sum 4 bits
@@ -56,6 +61,9 @@ begin
 		FA_sub: for i in 0 to (n-1) generate
 			 FA_sub_i: full_adder port map (A => A1(i), B => (not A2(i)), Cin => aux_sub(i), S => sub(i), Cout => aux_sub(i+1));
 		end generate;
+		
+		OVERF: overflow_detector port map (A => A1(n-1), B => A2(n-1), Z => sub(n-1), O => OV);
+		
 		
 		E1 <= sum when (K="000") else
 			   sum1 when (K="001") else
