@@ -29,12 +29,19 @@ component overflow_detector port (
 		);
 end component;
 
+component complement2_4bit port ( 
+		X: in std_logic_vector(3 downto 0);
+		Z: out std_logic_vector(3 downto 0)
+		);
+end component;
+
 signal sum: std_logic_vector(n-1 downto 0); -- sum 4 bits
 signal aux_sum: std_logic_vector(n downto 0);
 signal sum1: std_logic_vector(n-1 downto 0); -- 1 implement
 signal aux_sum1: std_logic_vector(n downto 0);
 signal sub: std_logic_vector(n-1 downto 0);
 signal aux_sub: std_logic_vector(n downto 0);
+signal comp2: std_logic_vector(3 downto 0);
 signal cts: std_logic_vector(8 downto 0); -- carry outs
 constant zeros : std_logic_vector(n-1 downto 0) := ( others => '0');
 begin
@@ -64,10 +71,13 @@ begin
 		
 		OVERF: overflow_detector port map (A => A1(n-1), B => A2(n-1), Z => sub(n-1), O => OV);
 		
+		-- Complemento de 2 (Troca de sinal)
+		COMP_2: complement2_4bit port map(X => A1, Z => comp2);
 		
 		E1 <= sum when (K="000") else
 			   sum1 when (K="001") else
 				sub when (K="010") else
+				comp2 when (K="011") else
 			   zeros;
 			  
 		Cout <= cts(0) when (K="000") else
