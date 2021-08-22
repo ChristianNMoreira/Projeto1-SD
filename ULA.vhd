@@ -36,6 +36,7 @@ signal aux_sum1: std_logic_vector(n downto 0);
 signal sub: std_logic_vector(n-1 downto 0);
 signal aux_sub: std_logic_vector(n downto 0);
 signal cts: std_logic_vector(8 downto 0); -- carry outs
+signal not_a2: std_logic_vector(n-1 downto 0);
 constant zeros : std_logic_vector(n-1 downto 0) := ( others => '0');
 begin
 
@@ -57,9 +58,13 @@ begin
 		
 		--sub
 		
+		L1: for i in 0 to (n-1) generate
+			not_a2(i) <= not A2(i);
+		end generate L1;
+		
 		aux_sub(0) <= '1';
 		FA_sub: for i in 0 to (n-1) generate
-			 FA_sub_i: full_adder port map (A => A1(i), B => (not A2(i)), Cin => aux_sub(i), S => sub(i), Cout => aux_sub(i+1));
+			 FA_sub_i: full_adder port map (A => A1(i), B => not_a2(i), Cin => aux_sub(i), S => sub(i), Cout => aux_sub(i+1));
 		end generate;
 		
 		OVERF: overflow_detector port map (A => A1(n-1), B => A2(n-1), Z => sub(n-1), O => OV);
