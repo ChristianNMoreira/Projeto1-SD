@@ -1,1 +1,4 @@
 db/
+simulation/modelsim/
+output_files/
+incremental_db/
