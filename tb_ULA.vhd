@@ -41,6 +41,7 @@ begin
 		wait for 15 ns; c_in <= '0'; a_1 <= "0110"; a_2 <= "0010"; k_aux <= "000";
 		wait for 15 ns; k_aux <= "001";
 		wait for 15 ns; k_aux <= "010";
+		wait for 15 ns; k_aux <= "011";
 		wait;
 	end process estimulo;
 	
