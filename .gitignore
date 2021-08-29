@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 *.png
 *.bak
 /db
@@ -30,3 +31,9 @@ obj
 *.swp
 *.a
 nios_workspace
+=======
+db/
+simulation/modelsim/
+output_files/
+incremental_db/
+>>>>>>> 9a5eb9600070f3433a4dbc9af3a870a9ed432460
