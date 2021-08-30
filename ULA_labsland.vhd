@@ -23,9 +23,9 @@ entity ULA_labsland is
 		SW: in std_logic_vector(17 downto 0);
 		--KEY: in std_logic_vector(2 downto 0);
 		LEDG: out std_logic_vector(0 downto 0);
-		HEX0: out std_logic_vector(6 downto 0);
-		HEX1: out std_logic_vector(6 downto 0);
-		HEX3: out std_logic_vector(6 downto 0)
+		HEX3: out std_logic_vector(6 downto 0);
+		HEX2: out std_logic_vector(6 downto 0);
+		HEX0: out std_logic_vector(6 downto 0)
 	);
 
 end ULA_labsland;
@@ -61,7 +61,6 @@ signal Cins: std_logic_vector(n downto 0);
 signal Ss: std_logic_vector(n-1 downto 0);
 signal K: std_logic_vector(2 downto 0);
 signal Y: std_logic_vector(n-1 downto 0);
-signal A: std_logic_vector(n-1 downto 0);
 constant zeros : std_logic_vector(n-1 downto 0) := ( others => '0');
 
 begin
@@ -71,10 +70,8 @@ begin
     K(2) <= SW(2);
 	Dcd: decoder port map (K => K, D => D);
 	
-	A <= SW((2+n) downto 3);
-	
-	H1: decoder_hex port map (X => A, H => HEX0);
-	H2: decoder_hex port map (X => SW((2+2*n) downto (3+n)), H => HEX1);
+	H1: decoder_hex port map (X => SW((2+n) downto 3), H => HEX3);
+	H2: decoder_hex port map (X => SW((2+2*n) downto (3+n)), H => HEX2);
 
 	-- 1 0 0 0 0 0 0 0  =>  soma
 	-- 0 1 0 0 0 0 0 0  =>  incremento +1
@@ -95,7 +92,7 @@ begin
 	end generate;
 
 	Y <= Ss;
-	H3: decoder_hex port map (X =>Y, H => HEX3);
+	H3: decoder_hex port map (X =>Y, H => HEX0);
 	LEDG(0) <= Cins(n);
 
 	
