@@ -13,7 +13,7 @@ entity ULA is
 		Cout: out std_logic;
 		OV: out std_logic; --flag Overflow
 		Negative: out std_logic; -- flag Negativo
-		--Z: out std_logic; -- flag Zero
+		Z: out std_logic; -- flag Zero
 		Y: out std_logic_vector(n-1 downto 0)
 	);
 
@@ -47,10 +47,12 @@ signal bit_and_bit: std_logic_vector(n-1 downto 0);
 signal bit_xor_bit: std_logic_vector(n-1 downto 0);
 signal bit_nand_bit: std_logic_vector(n-1 downto 0);
 signal O: std_logic;
--- signal detect_zero: std_ulogic;
+
+signal resultado: std_logic_vector(n-1 downto 0);
 
 signal not_a1: std_logic_vector(n-1 downto 0);
 signal not_a2: std_logic_vector(n-1 downto 0);
+signal detect_zero: std_logic_vector(n-1 downto 0);
 
 begin
 
@@ -82,14 +84,18 @@ begin
 
 	OVERF: overflow_detector port map (A => A(n-1), B => B(n-1), Z => Ss(n-1), O => O);
 	
-	--zero: for i in 1 to (n-1) generate
-	--	detect_zero <= Ss(i) or Ss(i-1);
-	--end generate;
 	result: for i in 0 to (n-1) generate
-		Y(i) <= (Ss(i) and (D(7) or D(6) or D(5) or D(4))) or (bit_or_bit(i) and D(3)) or (bit_xor_bit(i) and D(2)) or (bit_and_bit(i) and D(1)) or (bit_nand_bit(i) and D(0));
+		resultado(i) <= (Ss(i) and (D(7) or D(6) or D(5) or D(4))) or (bit_or_bit(i) and D(3)) or (bit_xor_bit(i) and D(2)) or (bit_and_bit(i) and D(1)) or (bit_nand_bit(i) and D(0));
 	end generate;
+	
+	detect_zero(0) <= resultado(0);
+	zero: for i in 1 to (n-1) generate
+		detect_zero(i) <= detect_zero(i-1) or resultado(i);
+	end generate;
+	
+	Y <= resultado;
 	Cout <= Cins(n);
 	OV <= O and D(4);
 	Negative <= Ss(n-1) and (D(4) or D(5));
-	-- Z <= not detect_zero;
+	Z <= not detect_zero(n-1);
 end teste;
