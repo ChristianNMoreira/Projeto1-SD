@@ -3,12 +3,15 @@ use ieee.std_logic_1164.all;
 
 entity testbench is
 	generic(
-		n: integer:= 4
+		n: integer:= 5
 	);
 end;
 
 architecture tb_ULA of testbench is
 component ULA
+	generic(
+		n: integer:= 4
+	);
 	port (
 		Cin: in std_logic;
 		A, B: in std_logic_vector(n-1 downto 0);
@@ -31,14 +34,18 @@ begin
 
 -- instância da ula para interconexão do componente com o processo de estimulação
 
-	ULA0: ULA port map (Cin => c_in, A => a_1, B => b_1, K => k_aux, Cout => c_out, OV => o_v, Y => y_1);
+	ULA0: ULA generic map (5) port map (Cin => c_in, A => a_1, B => b_1, K => k_aux, Cout => c_out, OV => o_v, Y => y_1);
 	
 	estimulo: process
 	begin
-		wait for 15 ns; c_in <= '0'; a_1 <= "0110"; b_1 <= "0010"; k_aux <= "000";
+		wait for 15 ns; c_in <= '0'; a_1 <= "01101"; b_1 <= "00101"; k_aux <= "000";
 		wait for 15 ns; k_aux <= "001";
 		wait for 15 ns; k_aux <= "010";
 		wait for 15 ns; k_aux <= "011";
+		wait for 15 ns; k_aux <= "100";
+		wait for 15 ns; k_aux <= "101";
+		wait for 15 ns; k_aux <= "110";
+		wait for 15 ns; k_aux <= "111";
 		wait;
 	end process estimulo;
 	
